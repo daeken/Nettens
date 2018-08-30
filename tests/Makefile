@@ -3,11 +3,13 @@ SRC = $(wildcard *.c)
 ASM = $(SRC:.c=.s)
 BC = $(SRC:.c=.bc)
 
+CCFLAGS = -c -emit-llvm -target i386-pc-none-eabi
+
 %.s: %.c
-	clang -c -S -emit-llvm -o $@ $<
+	clang -S $(CCFLAGS) -o $@ $<
 
 %.bc: %.c
-	clang -c -emit-llvm -o $@ $<
+	clang $(CCFLAGS) -o $@ $<
 
 all: $(ASM) $(BC)
 

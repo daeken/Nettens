@@ -6,8 +6,21 @@ namespace Nettens.BitCode {
 		readonly byte[] Data;
 		int BitPosition;
 		int BytePosition;
-		
+		int OverallBitPosition {
+			get => (BytePosition << 3) | BitPosition;
+			set {
+				BitPosition = value & 7;
+				BytePosition = value >> 3;
+			}
+		}
+
 		public BitReader(byte[] data) => Data = data;
+
+		public void PadTo(int div) {
+			var sub = OverallBitPosition % div;
+			if(sub != 0)
+				OverallBitPosition += div - sub;
+		}
 
 		public void NextBit() {
 			if(++BitPosition == 8) {

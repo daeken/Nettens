@@ -6,7 +6,7 @@ namespace Nettens.Cli {
 	class Program {
 		static void Main(string[] args) {
 			var compiler = new Compiler();
-			compiler.LoadBC(File.ReadAllBytes("../tests/add.bc"));
+			compiler.LoadIR(File.ReadAllText("../tests/if.s"));
 		}
 	}
 }

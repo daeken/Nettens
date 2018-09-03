@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cli", "Cli\Cli.csproj", "{7
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compiler", "Compiler\Compiler.csproj", "{6F52537C-EB43-4387-B630-8BD98955A7EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitCode", "BitCode\BitCode.csproj", "{CD0226B4-704C-4538-B2AE-4E74B26290D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LlvmParser", "LlvmParser\LlvmParser.csproj", "{CF180619-F6D0-4AB4-AE5C-4B14B62BD6C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,9 +20,9 @@ Global
 		{6F52537C-EB43-4387-B630-8BD98955A7EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F52537C-EB43-4387-B630-8BD98955A7EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F52537C-EB43-4387-B630-8BD98955A7EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CD0226B4-704C-4538-B2AE-4E74B26290D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CD0226B4-704C-4538-B2AE-4E74B26290D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CD0226B4-704C-4538-B2AE-4E74B26290D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CD0226B4-704C-4538-B2AE-4E74B26290D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF180619-F6D0-4AB4-AE5C-4B14B62BD6C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF180619-F6D0-4AB4-AE5C-4B14B62BD6C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF180619-F6D0-4AB4-AE5C-4B14B62BD6C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF180619-F6D0-4AB4-AE5C-4B14B62BD6C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

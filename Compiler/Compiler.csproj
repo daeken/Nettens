@@ -8,7 +8,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\BitCode\BitCode.csproj" />
+      <ProjectReference Include="..\LlvmParser\LlvmParser.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="morelinq" Version="3.0.0" />
     </ItemGroup>
 
 </Project>

@@ -77,6 +77,31 @@ public:
         });
     }
 
+    void visitBranchInst(BranchInst &branch) {
+        if(branch.isConditional())
+            output("instruction", "br.if", [&] {
+                outputOperand(branch.getOperand(0));
+                output("target", getName(*branch.getSuccessor(0)), [] {});
+                output("target", getName(*branch.getSuccessor(1)), [] {});
+            });
+        else
+            output("instruction", "br", [&] {
+                output("target", getName(*branch.getSuccessor(0)), [] {});
+            });
+    }
+
+    void visitICmpInst(ICmpInst &icmp) {
+        auto pred = icmp.isSigned()
+            ? icmp.getSignedPredicate()
+            : icmp.getUnsignedPredicate();
+        output("instruction", "icmp", [&] {
+            output("predicate", ICmpInst::getPredicateName(pred).str(), [] {});
+            outputOperand(&icmp);
+            outputOperand(icmp.getOperand(0));
+            outputOperand(icmp.getOperand(1));
+        });
+    }
+
     void visitLoadInst(LoadInst &load) {
         output("instruction", "load", [&] {
             outputOperand(&load);

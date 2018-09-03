@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compiler", "Compiler\Compil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LlvmParser", "LlvmParser\LlvmParser.csproj", "{CF180619-F6D0-4AB4-AE5C-4B14B62BD6C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrettyPrinter", "PrettyPrinter\PrettyPrinter.csproj", "{DBFC1875-CC97-450B-9470-72D8A2CB3902}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{CF180619-F6D0-4AB4-AE5C-4B14B62BD6C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF180619-F6D0-4AB4-AE5C-4B14B62BD6C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF180619-F6D0-4AB4-AE5C-4B14B62BD6C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBFC1875-CC97-450B-9470-72D8A2CB3902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBFC1875-CC97-450B-9470-72D8A2CB3902}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBFC1875-CC97-450B-9470-72D8A2CB3902}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBFC1875-CC97-450B-9470-72D8A2CB3902}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

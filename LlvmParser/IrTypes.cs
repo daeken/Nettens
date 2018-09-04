@@ -59,8 +59,17 @@ namespace LlvmParser {
 		public IrOperand Output, Pointer;
 	}
 
+	public class PhiInst : IrInst {
+		public IrOperand Output;
+		public (string Block, string Value)[] Incoming;
+	}
+
 	public class ReturnInst : IrInst {
 		public IrOperand Value;
+	}
+
+	public class SelectInst : IrInst {
+		public IrOperand Output, Compare, A, B;
 	}
 
 	public class StoreInst : IrInst {

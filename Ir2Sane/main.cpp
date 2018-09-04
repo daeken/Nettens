@@ -134,8 +134,8 @@ public:
     void visitCallInst(CallInst &call) {
         output("instruction", "call", [&] {
             outputOperand(&call);
-            if(call.isTailCall())
-                output("flag", "tail", [] {});
+            //if(call.isTailCall())
+            //    output("flag", "tail", [] {});
             output("target", call.getCalledFunction()->getName().str(), [] {});
             for(auto &o : call.arg_operands()) {
                 outputOperand(o);
@@ -143,10 +143,27 @@ public:
         });
     }
 
+    void visitPHINode(PHINode &phi) {
+        output("instruction", "phi", [&] {
+            outputOperand(&phi);
+            for(auto i = 0; i < phi.getNumIncomingValues(); ++i)
+                output(getName(*phi.getIncomingBlock(i)), getName(*phi.getIncomingValue(i)), [] {});
+        });
+    }
+
     void visitReturnInst(ReturnInst &ret) {
         output("instruction", "ret", [&] {
             if(ret.getReturnValue() != nullptr)
                 outputOperand(ret.getReturnValue());
+        });
+    }
+
+    void visitSelectInst(SelectInst &sel) {
+        output("instruction", "select", [&] {
+            outputOperand(&sel);
+            outputOperand(sel.getOperand(0));
+            outputOperand(sel.getOperand(1));
+            outputOperand(sel.getOperand(2));
         });
     }
 };

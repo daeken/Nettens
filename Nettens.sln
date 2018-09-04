@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LlvmParser", "LlvmParser\Ll
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrettyPrinter", "PrettyPrinter\PrettyPrinter.csproj", "{DBFC1875-CC97-450B-9470-72D8A2CB3902}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{262E43CB-8FF8-4EA2-BFF0-CA7DB2751A73}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{DBFC1875-CC97-450B-9470-72D8A2CB3902}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBFC1875-CC97-450B-9470-72D8A2CB3902}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBFC1875-CC97-450B-9470-72D8A2CB3902}.Release|Any CPU.Build.0 = Release|Any CPU
+		{262E43CB-8FF8-4EA2-BFF0-CA7DB2751A73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{262E43CB-8FF8-4EA2-BFF0-CA7DB2751A73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{262E43CB-8FF8-4EA2-BFF0-CA7DB2751A73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{262E43CB-8FF8-4EA2-BFF0-CA7DB2751A73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

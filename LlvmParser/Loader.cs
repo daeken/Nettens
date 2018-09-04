@@ -118,9 +118,21 @@ namespace LlvmParser {
 						Output = ParseOperand(node[0]), 
 						Pointer = ParseOperand(node[1])
 					};
+				case "phi":
+					return new PhiInst {
+						Output = ParseOperand(node[0]), 
+						Incoming = node.Skip(1).Select(x => (x.Name, x.Value)).ToArray()
+					};
 				case "ret":
 					return new ReturnInst {
 						Value = ParseOperand(node[0])
+					};
+				case "select":
+					return new SelectInst {
+						Output = ParseOperand(node[0]), 
+						Compare = ParseOperand(node[1]), 
+						A = ParseOperand(node[2]), 
+						B = ParseOperand(node[3])
 					};
 				case "store":
 					return new StoreInst {

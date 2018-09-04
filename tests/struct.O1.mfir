@@ -1,0 +1,12 @@
+;8:function^
+	;4:test^
+	;4:type^
+		;4:void^
+	;5:$$end^
+	;5:block^
+		;2:%0^
+		;11:instruction^
+			;3:ret^
+		;5:$$end^
+	;5:$$end^
+;5:$$end^

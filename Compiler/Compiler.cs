@@ -70,9 +70,13 @@ namespace Nettens.CompilerCore {
 			}
 
 			foreach(var block in func.Blocks) {
-				void FinishBlock() =>
+				bool finished = false;
+				void FinishBlock() {
+					if(finished) return;
+					finished = true;
 					blockPhiResolvers[block.Name].ForEach(Write);
-				
+				}
+
 				Write($"{RenameBlock(block.Name)}:");
 				Indentation++;
 				foreach(var inst in block.Instructions) {
@@ -119,6 +123,7 @@ namespace Nettens.CompilerCore {
 							break;
 					}
 				}
+				FinishBlock();
 				Indentation--;
 			}
 			

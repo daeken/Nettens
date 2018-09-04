@@ -36,4 +36,4 @@ attributes #0 = { noinline nounwind optnone "correctly-rounded-divide-sqrt-fp-ma
 
 !0 = !{i32 1, !"NumRegisterParameters", i32 0}
 !1 = !{i32 1, !"wchar_size", i32 4}
-!2 = !{!"clang version 5.0.1 (tags/RELEASE_501/final)"}
+!2 = !{!"clang version 6.0.1-svn334776-1~exp1~20180826122732.96 (branches/release_60)"}

@@ -7,6 +7,7 @@ namespace Nettens.Cli {
 		static void Main(string[] args) {
 			var compiler = new Compiler();
 			compiler.LoadIR(File.ReadAllText(args[0]));
+			compiler.Compile(args[1]);
 		}
 	}
 }

@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Mono.Cecil" Version="0.10.0" />
       <PackageReference Include="morelinq" Version="3.0.0" />
     </ItemGroup>
 

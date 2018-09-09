@@ -28,12 +28,18 @@ string strType(Type *type) {
     return rso.str();
 }
 
-string getName(Value &bb) {
-    if(bb.hasName())
-        return bb.getName().str();
+string getName(Value *bb) {
+    if(bb->hasName())
+        return bb->getName().str();
+
+    if(auto *v = dyn_cast<ConstantExpr>(bb)) {
+        if(v->isCast())
+            bb = v->getOperand(0);
+    }
+
     string temp;
     raw_string_ostream rso(temp);
-    bb.printAsOperand(rso, false);
+    bb->printAsOperand(rso, false);
     return rso.str();
 }
 
@@ -58,7 +64,7 @@ void output(Type *type) {
 }
 
 void outputOperand(Value *val) {
-    output("operand", getName(*val), [&] {
+    output("operand", getName(val), [&] {
         output(val->getType());
     });
 }
@@ -81,12 +87,12 @@ public:
         if(branch.isConditional())
             output("instruction", "br.if", [&] {
                 outputOperand(branch.getOperand(0));
-                output("target", getName(*branch.getSuccessor(0)), [] {});
-                output("target", getName(*branch.getSuccessor(1)), [] {});
+                output("target", getName(branch.getSuccessor(0)), [] {});
+                output("target", getName(branch.getSuccessor(1)), [] {});
             });
         else
             output("instruction", "br", [&] {
-                output("target", getName(*branch.getSuccessor(0)), [] {});
+                output("target", getName(branch.getSuccessor(0)), [] {});
             });
     }
 
@@ -131,6 +137,13 @@ public:
         });
     }
 
+    void visitBitCastInst(BitCastInst &bc) {
+        output("instruction", "bitcast", [&] {
+            outputOperand(&bc);
+            outputOperand(bc.getOperand(0));
+        });
+    }
+
     void visitCallInst(CallInst &call) {
         output("instruction", "call", [&] {
             outputOperand(&call);
@@ -147,7 +160,7 @@ public:
         output("instruction", "phi", [&] {
             outputOperand(&phi);
             for(auto i = 0; i < phi.getNumIncomingValues(); ++i)
-                output(getName(*phi.getIncomingBlock(i)), getName(*phi.getIncomingValue(i)), [] {});
+                output(getName(phi.getIncomingBlock(i)), getName(phi.getIncomingValue(i)), [] {});
         });
     }
 
@@ -199,7 +212,7 @@ int main(int argc, char **argv) {
             for(auto i = 0U; i < numParams; ++i)
                 output(funcType->getFunctionParamType(i));
             for(auto &bb : func) {
-                output("block", getName(bb), [&] {
+                output("block", getName(&bb), [&] {
                     for(auto &inst : bb)
                         output(inst);
                 });

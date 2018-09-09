@@ -35,6 +35,10 @@ namespace LlvmParser {
 		public IrOperand Output, A, B;
 	}
 
+	public class BitcastInst : IrInst {
+		public IrOperand Output, Value;
+	}
+
 	public class BrInst : IrInst {
 		public string Target;
 	}

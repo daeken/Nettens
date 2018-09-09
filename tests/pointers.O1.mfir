@@ -9,6 +9,21 @@
 	;5:block^
 		;2:%1^
 		;11:instruction^
+			;7:bitcast^
+			;7:operand^
+				;2:%2^
+				;4:type^
+					;4:i32*^
+				;5:$$end^
+			;5:$$end^
+			;7:operand^
+				;2:%0^
+				;4:type^
+					;3:i8*^
+				;5:$$end^
+			;5:$$end^
+		;5:$$end^
+		;11:instruction^
 			;4:load^
 			;7:operand^
 				;2:%3^
@@ -77,7 +92,7 @@
 				;5:deref^
 			;5:$$end^
 			;7:operand^
-				;32:inttoptr (i32 -559038737 to i8*)^
+				;10:-559038737^
 				;4:type^
 					;3:i8*^
 				;5:$$end^

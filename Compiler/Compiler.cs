@@ -87,6 +87,9 @@ namespace Nettens.CompilerCore {
 						case BinaryInst b:
 							Write($"var {Rewrite(b.Output)} = {Rewrite(b.A)} {BinaryOps[b.Op]} {Rewrite(b.B)};");
 							break;
+						case BitcastInst bc:
+							Write($"var {Rewrite(bc.Output)} = ({From(bc.Output.Type)}) {Rewrite(bc.Value)};");
+							break;
 						case BrIfInst bri:
 							FinishBlock();
 							Write($"if({Rewrite(bri.Condition)}) goto {RenameBlock(bri.If)};");
@@ -131,7 +134,11 @@ namespace Nettens.CompilerCore {
 			Write("}");
 		}
 
-		string Rewrite(IrOperand op) => Rewrite(op.Name);
+		string Rewrite(IrOperand op) {
+			if(op.Type.Name.EndsWith("*") && int.TryParse(op.Name, out var x))
+				return $"({From(op.Type)}) 0x{unchecked((uint) x):X}U";
+			return Rewrite(op.Name);
+		}
 
 		string Rewrite(string name) {
 			if(name.StartsWith("%"))

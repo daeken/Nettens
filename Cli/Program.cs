@@ -15,7 +15,7 @@ namespace Nettens.Cli {
 			var tree = SyntaxFactory.ParseSyntaxTree(File.ReadAllText("../tests/temp.cs"));
 			var compilation = CSharpCompilation.Create("NettensOutput")
 				.WithOptions(new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary, allowUnsafe: true))
-				.AddReferences(MetadataReference.CreateFromFile(typeof(object).GetTypeInfo().Assembly.Location))
+				.AddReferences(MetadataReference.CreateFromFile(typeof(object).Assembly.Location))
 				.AddSyntaxTrees(tree);
 			var res = compilation.Emit(args[1]);
 			if(!res.Success)

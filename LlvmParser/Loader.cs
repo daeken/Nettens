@@ -90,6 +90,11 @@ namespace LlvmParser {
 						A = ParseOperand(operands[1]), 
 						B = ParseOperand(operands[2]) 
 					};
+				case "bitcast":
+					return new BitcastInst {
+						Output = ParseOperand(node[0]), 
+						Value = ParseOperand(node[1])
+					};
 				case "br":
 					return new BrInst {
 						Target = node[0].Value

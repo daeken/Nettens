@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -13,9 +14,9 @@ namespace Nettens.Cli {
 			compiler.Compile("../tests/temp.cs");
 
 			var tree = SyntaxFactory.ParseSyntaxTree(File.ReadAllText("../tests/temp.cs"));
-			var compilation = CSharpCompilation.Create("NettensOutput")
+			var compilation = CSharpCompilation.Create(Path.GetFileName(args[1]).Split('.')[0])
 				.WithOptions(new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary, allowUnsafe: true))
-				.AddReferences(MetadataReference.CreateFromFile(typeof(object).Assembly.Location))
+				.AddReferences(MetadataReference.CreateFromFile("System.Runtime.dll"))	
 				.AddSyntaxTrees(tree);
 			var res = compilation.Emit(args[1]);
 			if(!res.Success)
